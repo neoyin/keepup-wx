@@ -1,4 +1,4 @@
-package me.keepup.neo.keepupwx;
+package me.keepup.neo.wx;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
