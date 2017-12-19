@@ -7,7 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.InputStream;
 
-@Path("/note")
+@Path("/abc")
 public class NoteBookController {
 
 
@@ -15,7 +15,7 @@ public class NoteBookController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String init(){
-        return "";
+        return "init";
     }
 
     @Path("/upload")
