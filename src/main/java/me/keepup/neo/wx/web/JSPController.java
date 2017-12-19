@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/jsp")
+@RequestMapping("/page")
 public class JSPController {
 
 

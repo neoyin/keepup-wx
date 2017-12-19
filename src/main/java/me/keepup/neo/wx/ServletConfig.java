@@ -14,7 +14,7 @@ public class ServletConfig {
     public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
         ServletRegistrationBean registration = new ServletRegistrationBean(
                 dispatcherServlet);
-        registration.addUrlMappings("/jsp/*");
+        registration.addUrlMappings("/page/*");
         return registration;
     }
     @Bean
