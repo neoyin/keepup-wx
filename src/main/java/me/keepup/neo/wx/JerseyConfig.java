@@ -5,7 +5,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig(){
