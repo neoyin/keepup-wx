@@ -14,7 +14,7 @@ public class NoteBookController {
     @Path("/init")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String init(){
+    public String init() {
         return "init";
     }
 
@@ -22,7 +22,7 @@ public class NoteBookController {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public String upload(@FormDataParam("file") InputStream file,
-                         @FormDataParam("file") FormDataContentDisposition fileDisposition){
+                         @FormDataParam("file") FormDataContentDisposition fileDisposition) {
 
         System.out.println(file);
         return null;
