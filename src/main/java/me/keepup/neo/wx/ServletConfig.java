@@ -22,7 +22,7 @@ public class ServletConfig {
         ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(new JerseyConfig()));
         registration.setEnabled(true);
         registration.setName("jersey-servlet");
-        registration.addUrlMappings("/rest/*");
+        registration.addUrlMappings("/api/*");
         registration.setLoadOnStartup(0);
         return registration;
     }
