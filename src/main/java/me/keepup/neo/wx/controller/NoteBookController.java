@@ -12,25 +12,7 @@ import java.io.InputStream;
 public class NoteBookController {
 
 
-    @Value("")
 
-
-    @Path("/weixin")
-    @GET
-    public String weixin(@QueryParam("signature")String signature,
-                         @QueryParam("echostr")String echostr,
-                         @QueryParam("token")String token,
-                         @QueryParam("timestamp")String timestamp,
-                         @QueryParam("nonce")String nonce){
-
-
-
-
-
-
-
-        return echostr;
-    }
 
 
     @Path("/init")

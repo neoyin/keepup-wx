@@ -16,8 +16,12 @@
 
 package me.keepup.neo.wx.web;
 
+import me.keepup.neo.wx.bean.Weixin;
+import me.keepup.neo.wx.utils.WeixinUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -27,13 +31,29 @@ import java.util.Map;
 public class IndexAction extends BaseAction{
 
 
+    @Autowired
+    private WeixinUtil weixinUtil;
+
+
     @RequestMapping("/")
     public String welcome(HttpServletRequest requeste, Map<String, Object> model) {
 
-        model.put("time", new Date());
-        model.put("test","test");
         model.putAll(genWeixinSign(requeste));
+        System.out.println(model);
         return "welcome";
+    }
+
+    @RequestMapping("/weixin/login")
+    public String weixinLogin(@RequestParam("code")String code, Map<String, Object> model){
+
+        System.out.println(code);
+
+        Weixin user = weixinUtil.getWeixinUserInfoByCode(code);
+        model.put("user",user);
+
+        String path ="welcome";
+
+        return path;
     }
 
 }
