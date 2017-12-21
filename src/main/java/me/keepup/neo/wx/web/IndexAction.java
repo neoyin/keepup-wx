@@ -16,29 +16,24 @@
 
 package me.keepup.neo.wx.web;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 @Controller
-public class WelcomeController {
+public class IndexAction extends BaseAction{
 
 
     @RequestMapping("/")
-    public String welcome(Map<String, Object> model) {
+    public String welcome(HttpServletRequest requeste, Map<String, Object> model) {
+
         model.put("time", new Date());
         model.put("test","test");
-
+        model.putAll(genWeixinSign(requeste));
         return "welcome";
-    }
-
-    @RequestMapping("/foo")
-    public String foo(Map<String, Object> model) {
-        throw new RuntimeException("Foo");
     }
 
 }
