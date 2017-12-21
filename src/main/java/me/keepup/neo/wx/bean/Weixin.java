@@ -15,6 +15,7 @@ public class Weixin {
     private String nickname;
     private Integer gender;
     private String city;
+    private Integer subscribe;
 
     public Weixin() {
     }

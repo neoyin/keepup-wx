@@ -169,7 +169,7 @@ public class WeixinUtil {
 
 
     public Map<String,String> weixinSign(HttpServletRequest request){
-        String url = request.getRequestURI();
+        String url = request.getRequestURL().toString();
         String ticket = getTicket();
         return Sign.sign(ticket,url);
     }
