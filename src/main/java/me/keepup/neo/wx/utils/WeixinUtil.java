@@ -85,8 +85,6 @@ public class WeixinUtil {
                 .request().get(String.class);
         System.out.println("getApiTicket---"+responseEntity);
         return responseEntity;
-
-
     }
 
 
@@ -161,12 +159,8 @@ public class WeixinUtil {
         }catch (Exception e){
             LOGGER.error(e.getMessage(),e);
         }
-
-
         return object;
     }
-
-
 
     public Map<String,String> weixinSign(HttpServletRequest request){
         String url = request.getRequestURL().toString();

@@ -4,3 +4,4 @@
 - <https://github.com/Tencent/weui/wiki>
 - <https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html>
 - <http://blog.didispace.com/springbootcache1/>
+- <http://jqweui.com/components#gallery>
