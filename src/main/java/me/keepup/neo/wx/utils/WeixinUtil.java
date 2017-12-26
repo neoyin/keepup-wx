@@ -1,8 +1,6 @@
 package me.keepup.neo.wx.utils;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import me.keepup.neo.wx.Const;
 import me.keepup.neo.wx.bean.Weixin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +17,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
+
 import static me.keepup.neo.wx.Const.CacheKey.*;
 
 @Component("weixinUtil")
@@ -44,11 +43,22 @@ public class WeixinUtil {
     static Client client  = ClientBuilder.newClient();
 
     public String getToken(){
-        WebTarget target = client.target(accessToken_url)
-                .queryParam("appid",appId)
-                .queryParam("secret",appkey);
-        String responseEntity = target.request(MediaType.APPLICATION_JSON).get(String.class);
-        return responseEntity;
+
+        String accessToken = getCache().get(TOKEN_KEY,String.class);
+
+        if (StringUtils.isEmpty(accessToken)) {
+            WebTarget target = client.target(accessToken_url)
+                    .queryParam("appid", appId)
+                    .queryParam("secret", appkey);
+            String responseEntity = target.request(MediaType.APPLICATION_JSON).get(String.class);
+            System.out.println("getToken()----" + responseEntity);
+            if (StringUtils.isEmpty(responseEntity) || !responseEntity.contains("access_token")) return null;
+            JSONObject object = JSONObject.parseObject(responseEntity);
+            if (!object.containsKey("access_token")) return null;
+            accessToken = object.getString("access_token");
+            getCache().put(TOKEN_KEY, accessToken);
+        }
+        return accessToken;
     }
 
 
@@ -60,16 +70,8 @@ public class WeixinUtil {
 
         String ticket = getCache().get(TICKET_KEY,String.class);
         if (StringUtils.isEmpty(ticket)){
-            String accessToken = getCache().get(TOKEN_KEY,String.class);
-            if (StringUtils.isEmpty(accessToken)){
-                String tokenResp = getToken();
-                if (StringUtils.isEmpty(tokenResp)||!tokenResp.contains("access_token"))return null;
-                JSONObject object = JSONObject.parseObject(tokenResp);
-                if (!object.containsKey("access_token"))return null;
-                accessToken = object.getString("access_token");
-                getCache().put(TOKEN_KEY,ticket);
-            }
-
+            String accessToken = getToken();
+            if (StringUtils.isEmpty(accessToken))return null;
             String ticketResp = getApiTicket(accessToken);
             if (StringUtils.isEmpty(ticketResp)||!ticketResp.contains("ticket"))return null;
             JSONObject ticketObject = JSONObject.parseObject(ticketResp);
@@ -167,5 +169,6 @@ public class WeixinUtil {
         String ticket = getTicket();
         return Sign.sign(ticket,url);
     }
+
 
 }
