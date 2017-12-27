@@ -17,14 +17,18 @@
 package me.keepup.neo.wx.web;
 
 import me.keepup.neo.wx.bean.Weixin;
+import me.keepup.neo.wx.bean.WeixinProduct;
+import me.keepup.neo.wx.service.WeixinProductService;
 import me.keepup.neo.wx.utils.WeixinUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -34,11 +38,18 @@ public class IndexAction extends BaseAction{
     @Autowired
     private WeixinUtil weixinUtil;
 
+    @Autowired
+    private WeixinProductService weixinProductService;
+
+    @Value("#{'${weixin.product_id}'.split(',')}")
+    private List<String> product_ids;
 
     @RequestMapping("/")
     public String welcome(HttpServletRequest requeste, Map<String, Object> model) {
 
+        List<WeixinProduct> productList = weixinProductService.getProductListByIds(product_ids);
         model.putAll(genWeixinSign(requeste));
+        model.put("products",productList);
         System.out.println(model);
         return "welcome";
     }

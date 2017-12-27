@@ -1,7 +1,7 @@
 package me.keepup.neo.wx;
 
 import me.keepup.neo.wx.utils.WeixinUtil;
-import me.keepup.neo.wx.utils.WinxinShopUtil;
+import me.keepup.neo.wx.utils.WeixinShopUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class KeepupWxApplicationTests {
 	@Autowired
 	private WeixinUtil weixinUtil;
 	@Autowired
-	private WinxinShopUtil weixinShop;
+	private WeixinShopUtil weixinShop;
 
 
 	@Test

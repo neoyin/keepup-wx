@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
  * Created by neoyin on 2017/12/23.
  */
 @Component("weixinShop")
-public class WinxinShopUtil {
+public class WeixinShopUtil {
 
 
     @Autowired
