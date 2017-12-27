@@ -55,15 +55,16 @@ public class IndexAction extends BaseAction{
     }
 
     @RequestMapping("/weixin/login")
-    public String weixinLogin(@RequestParam("code")String code, Map<String, Object> model){
+    public String weixinLogin(@RequestParam("code")String code, Map<String, Object> model,HttpServletRequest request){
 
         System.out.println(code);
 
         Weixin user = weixinUtil.getWeixinUserInfoByCode(code);
+        if (user!=null){
+            request.getSession().setAttribute("sess",user);
+        }
         model.put("user",user);
-
-        String path ="welcome";
-
+        String path ="upload";
         return path;
     }
 

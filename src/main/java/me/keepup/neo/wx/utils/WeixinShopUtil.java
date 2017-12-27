@@ -39,8 +39,6 @@ public class WeixinShopUtil {
                 .post( Entity.text(object.toJSONString()));
         JSONObject jsonObject = response.readEntity(JSONObject.class);
 
-        System.out.println(jsonObject);
-
         if (jsonObject.containsKey("product_info")){
             JSONObject infoJson = jsonObject.getJSONObject("product_info");
             JSONObject baseJson =  infoJson.getJSONObject("product_base");
@@ -58,7 +56,6 @@ public class WeixinShopUtil {
                 info.setPrice(price);
                 info.setOri_price(ori_price);
             }
-            System.out.println(info);
             return info;
         }
         return null;
