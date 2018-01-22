@@ -5,7 +5,6 @@ import me.keepup.neo.wx.controller.RootController;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
-import org.springframework.context.annotation.Configuration;
 
 public class JerseyConfig extends ResourceConfig {
 

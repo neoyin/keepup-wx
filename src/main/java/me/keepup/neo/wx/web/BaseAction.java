@@ -12,7 +12,7 @@ public class BaseAction {
     @Autowired
     private WeixinUtil weixinUtil;
 
-    public Map<String,String> genWeixinSign(HttpServletRequest request){
+    protected Map<String,String> genWeixinSign(HttpServletRequest request){
         return weixinUtil.weixinSign(request);
     }
 

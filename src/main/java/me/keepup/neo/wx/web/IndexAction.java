@@ -16,6 +16,7 @@
 
 package me.keepup.neo.wx.web;
 
+import com.github.wxpay.sdk.WXPayUtil;
 import me.keepup.neo.wx.bean.Weixin;
 import me.keepup.neo.wx.bean.WeixinProduct;
 import me.keepup.neo.wx.service.WeixinProductService;
@@ -67,5 +68,17 @@ public class IndexAction extends BaseAction{
         String path ="upload";
         return path;
     }
+
+    @RequestMapping("/weixin/prepay")
+    public String prepay(){
+
+        String nonceStr = WXPayUtil.generateNonceStr();
+
+
+
+        return null;
+    }
+
+
 
 }

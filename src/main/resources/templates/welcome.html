@@ -17,8 +17,9 @@
   </div>
 </div>	
 <div class="weui-panel weui-panel_access">
-  <div class="weui-panel__bd">
+  <div class="weui-flex">
 
+  	<div class="weui-flex__item">
     <a th:each="p : ${products}" th:href="@{'javascript:openProductView(\''+${p.product_id}+'\')'}" class="weui-media-box weui-media-box_appmsg">
       <div class="weui-media-box__hd">
         <img class="weui-media-box__thumb" th:src="${p.main_img}" />
@@ -27,6 +28,7 @@
         <h4 class="weui-media-box__title" th:text="${p.name}"></h4>
       </div>
     </a>
+    </div>
   </div>
 </div>
 
@@ -67,22 +69,19 @@
 	function openProductView(pid){
 		if (typeof WeixinJSBridge == "undefined")
 		return false;
-
-		//var pid = "icheckpfq4O0swHJ8cS8h2Xmb0FfWxWl6U";//只需要传递
 		WeixinJSBridge.invoke('openProductViewWithPid',{
 			"pid":pid
 		},function(res){
 		// 返回res.err_msg,取值 
 		// open_product_view_with_id:ok 打开成功
-		console.log(res);
-		alert(res.err_msg);
-		if (res.err_msg != "open_product_view_with_id:ok"){
-		WeixinJSBridge.invoke('openProductView',{
-		"productInfo":"{\"product_id\":\""+pid+"\",\"product_type\":0}"
-		},function(res){ 
-		alert(res.err_msg);
-		});
-		}
+			console.log(res);
+			if (res.err_msg != "open_product_view_with_id:ok"){
+				WeixinJSBridge.invoke('openProductView',{
+					"productInfo":"{\"product_id\":\""+pid+"\",\"product_type\":0}"
+				},function(res){ 
+					alert(res.err_msg);
+				});
+			}
 		});
 	}
 
