@@ -37,9 +37,6 @@ public class IndexAction extends BaseAction{
 
 
     @Autowired
-    private WeixinUtil weixinUtil;
-
-    @Autowired
     private WeixinProductService weixinProductService;
 
     @Value("#{'${weixin.product_id}'.split(',')}")
@@ -55,29 +52,7 @@ public class IndexAction extends BaseAction{
         return "welcome";
     }
 
-    @RequestMapping("/weixin/login")
-    public String weixinLogin(@RequestParam("code")String code, Map<String, Object> model,HttpServletRequest request){
 
-        System.out.println(code);
-
-        Weixin user = weixinUtil.getWeixinUserInfoByCode(code);
-        if (user!=null){
-            request.getSession().setAttribute("sess",user);
-        }
-        model.put("user",user);
-        String path ="upload";
-        return path;
-    }
-
-    @RequestMapping("/weixin/prepay")
-    public String prepay(){
-
-        String nonceStr = WXPayUtil.generateNonceStr();
-
-
-
-        return null;
-    }
 
 
 

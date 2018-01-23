@@ -5,3 +5,6 @@
 - <https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html>
 - <http://blog.didispace.com/springbootcache1/>
 - <http://jqweui.com/components#gallery>
+
+##### 微信支付 
+- <http://blog.csdn.net/qq_26101151/article/details/53433380>

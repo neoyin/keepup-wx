@@ -10,7 +10,7 @@ import java.util.Map;
 public class BaseAction {
 
     @Autowired
-    private WeixinUtil weixinUtil;
+    protected WeixinUtil weixinUtil;
 
     protected Map<String,String> genWeixinSign(HttpServletRequest request){
         return weixinUtil.weixinSign(request);
