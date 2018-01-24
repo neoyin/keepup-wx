@@ -6,4 +6,6 @@ public interface AccountDao {
 
     AccountDto findById(String id);
     AccountDto findByOpenId(String openId);
+
+    AccountDto save(AccountDto accountDto);
 }
