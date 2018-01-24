@@ -2,6 +2,7 @@ package me.keepup.neo.wx.dao.dto;
 
 import me.keepup.neo.wx.bean.Weixin;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ public class AccountDto  {
     private String id;
     private Date create_time;
     private Weixin weixin;
+    @Indexed(unique = true)
     private String openid;
     private String phone;
     private int status;
