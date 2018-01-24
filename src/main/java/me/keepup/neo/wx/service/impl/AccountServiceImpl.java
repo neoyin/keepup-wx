@@ -5,9 +5,10 @@ import me.keepup.neo.wx.dao.AccountDao;
 import me.keepup.neo.wx.dao.dto.AccountDto;
 import me.keepup.neo.wx.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
-
+@Service("accountService")
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
