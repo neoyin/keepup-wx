@@ -3,9 +3,11 @@ package me.keepup.neo.wx.dao.dto;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+@Document(collection = "k_order")
 public class OrderDto {
 
 
